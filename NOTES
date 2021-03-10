@@ -1,0 +1,30 @@
+JobLister App:
+
+MODELS:
+
+Job * join table joining categories & users *
+    - belongs_to :user
+    - has_many :reviews
+    - has_many :users, through :reviews
+    - belongs_to :category
+    - title
+    - content
+
+User 
+    - has_many :jobs
+    - has_many :reviews
+    - has_many :reviewed_jobs, through :reviews
+    - has_many :categories, through :jobs
+    - username
+    - email 
+    - password_digest
+
+Review  * join table joining users & jobs *
+    - belongs_to :user
+    - belongs_to :job
+    - content
+
+Categories
+    - name
+    - has_many :jobs
+    - has_many :users, through :jobs
