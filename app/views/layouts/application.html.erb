@@ -7,6 +7,19 @@
     <%= csp_meta_tag %>
 
   <body>
+  <br>
+    <div>
+      <% if logged_in? %>
+      <%= link_to "Add a Job", new_job_path %> |
+      <%= link_to "All Jobs", jobs_path %> |
+      <%= link_to "Logout", logout_path, method:"delete" %>
+
+      <% else %>
+      <%= link_to "Sign Up", signup_path %> |
+      <%= link_to "Log In", login_path %>
+      <% end %>
+
+    </div>
     <%= yield %>
   </body>
 </html>
