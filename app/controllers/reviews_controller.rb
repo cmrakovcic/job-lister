@@ -12,7 +12,12 @@ class ReviewsController < ApplicationController
     end
 
     def new
-        @review = Review.new
+        if params[:job_id] && @job = Job.find_by_id(params[:job_id])
+            @review = @job.reviews.build
+        else
+            @error = "That job doesn't exist" if params[:job_id]
+            @review = Review.new
+        end
     end
 
     def create
