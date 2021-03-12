@@ -1,5 +1,5 @@
-<% if @job %>
-<h1>New Review for <%= @job.title %></h1>
+<% if @review.job %>
+<h1>New Review for <%= @review.job.title %></h1>
 <% else %>
 <h1>New Review</h1>
 <% end %>
@@ -16,9 +16,9 @@
   </div>
 <% end %>
 
-<%= form_for([@post, @review]) do |f|%>
+<%= form_for([@review.job, @review]) do |f|%>
 
-  <% if !@job %>
+  <% if !@review.job %>
     <%= f.label :job %>
     <%= f.collection_select :job_id, Job.all, :id, :title %>
 <% else %>
