@@ -14,6 +14,15 @@ class JobsController < ApplicationController
         end
     end
 
+    def index
+        @jobs = Job.all
+    end
+
+    def show
+        @job = Job.find_by_id(params[:id])
+        redirect_to jobs_path if !@job
+    end
+
     private
 
     def job_params
