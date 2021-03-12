@@ -3,7 +3,12 @@ class ReviewsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        @reviews = Review.all 
+        if params[:job_id] && @job = Job.find_by_id(params[:job_id])
+            @reviews = @job.reviews
+        else
+            @error = "That job doesn't exist" if params[:job_id]
+            @reviews = Review.all
+        end
     end
 
     def new
@@ -39,6 +44,6 @@ class ReviewsController < ApplicationController
     private
 
     def review_params 
-        params.require(:review).permit(:content, :post_id)
+        params.require(:review).permit(:content, :job_id)
     end
 end

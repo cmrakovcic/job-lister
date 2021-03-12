@@ -10,8 +10,9 @@
   <br>
     <div>
       <% if logged_in? %>
-      <%= link_to "Add a Job", new_job_path %> |
       <%= link_to "All Jobs", jobs_path %> |
+      <%= link_to "Add a Job", new_job_path %> |
+      <%= link_to "Add a Review", new_review_path %> |
       <%= button_to "Logout", logout_path, method:"delete" %>
 
       <% else %>
@@ -20,6 +21,14 @@
       <% end %>
 
     </div>
+
+    <div>
+      <% if flash[:message] %>
+        <%= flash[:message] %>
+      <% end %>
+      <%= @error %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,4 @@
+<h2><%= @review.content%> - <%= @review.user.username%></h2>
+
+
+<h4>Read the job here: <%= link_to @review.job.title, job_path(@review.job_id) %></h4>
