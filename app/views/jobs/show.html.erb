@@ -6,6 +6,9 @@
 
 <div><%= @job.content%></div>
 
+<p><%= link_to "See all Reviews", job_reviews_path(@job) %></p>
+<p><%= link_to "Add a New Comment", new_job_review_path(@job) %></p>
+
 <h3>Reviews:</h3>
 <% @job.reviews.each do |r| %>
     <li><strong><%= r.user.username %></strong> says "<%= link_to r.content, review_path(r) %>"</li>
