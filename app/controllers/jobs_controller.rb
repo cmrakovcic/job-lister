@@ -2,7 +2,20 @@ class JobsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def new
-        @job = Job.new
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @job = @user.jobs.build
+        else
+            @job = Job.new
+        end
+    end
+
+    def index
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @jobs = @user.jobs
+        else
+            @error = "That user doesn't exist" if params[:user_id]
+            @jobs = Job.all
+        end
     end
 
     def create
@@ -11,15 +24,6 @@ class JobsController < ApplicationController
             redirect_to jobs_path
         else
             render :new
-        end
-    end
-
-    def index
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @posts = @user.jobs
-        else
-            @error = "That user doesn't exist" if params[:user_id]
-            @reviews = Review.all
         end
     end
 

@@ -10,14 +10,12 @@ Rails.application.routes.draw do
  
   #logout route
   delete '/logout' => 'sessions#destroy'
-
+ 
+  resources :jobs do
+     resources :reviews
+  end
    resources :reviews
    resources :users do
-     resources :jobs, only: [:new, :create, :index]
-   end
-   resources :jobs do
-     resources :reviews, only: [:new, :create, :index]
-   end
-
-   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
- end
+     resources :jobs, shallow: true
+  end
+end
