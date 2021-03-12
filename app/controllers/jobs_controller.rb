@@ -18,7 +18,7 @@ class JobsController < ApplicationController
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
             @posts = @user.jobs
         else
-            @error = "That job doesn't exist" if params[:user_id]
+            @error = "That user doesn't exist" if params[:user_id]
             @reviews = Review.all
         end
     end
