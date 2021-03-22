@@ -4,6 +4,8 @@
 <br>
 <h2>Company: <%= @job.company%> </h2>
 
+<h2>Category: <%= @job.category.try(:name) %></h2>
+
 <div><%= @job.content%></div>
 
 <p><%= link_to "See all Reviews", job_reviews_path(@job) %></p>
