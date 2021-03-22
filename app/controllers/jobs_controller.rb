@@ -34,6 +34,16 @@ class JobsController < ApplicationController
         @job.build_category if !@job.category
     end
 
+    def update
+        @job = Job.find_by(id: params[:id])
+        redirect_to jobs_path if !@job
+        if @job.update(job_params)
+            redirect_to job_path(@job)
+        else
+            render :edit
+        end
+    end
+
     def show
         @job = Job.find_by_id(params[:id])
         redirect_to jobs_path if !@job
