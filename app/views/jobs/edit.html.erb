@@ -1,5 +1,7 @@
 <h1>Edit <%= @job.title%>!</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @job} %>
+
 <%= form_for(@job) do |f|%>
     <%= f.label "Choose a category:" %>
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
