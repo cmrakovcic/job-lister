@@ -1,12 +1,5 @@
-<h1>Welcome, <%= @user.username %> </h1>
+<h1>Welcome <%= @user.username %></h1>
 
-<% if @user.jobs.empty? %>
-    <h2>No jobs yet. Create a job <%= link_to "Here", new_job_path %></h2>
-<% else %>
-    <h2>Your Jobs:</h2>
-    <ul>
-        <% @user.jobs.each do |j| %>
-            <li><%= link_to j.title, job_path(j) %></li>
-    </ul>
-    <% end %>
-<% end %>
+<%= display_jobs %>
+
+<%= render partial: "jobs/jobs", locals: {jobs: @user.jobs} %>
