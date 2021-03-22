@@ -7,6 +7,7 @@ class JobsController < ApplicationController
         else
             @job = Job.new
         end
+        @job.build_category
     end
 
     def index
@@ -35,6 +36,6 @@ class JobsController < ApplicationController
     private
 
     def job_params
-         params.require(:job).permit(:title, :company, :content)
+         params.require(:job).permit(:title, :company, :content, :category_id, category_attributes: [:name])
     end
 end
