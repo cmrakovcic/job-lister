@@ -1,7 +1,15 @@
-<h1>All Jobs</h1>
-
-<ul>
-<% @jobs.each do |j| %>
-  <li><%= link_to j.title, job_path(j) %> - <%= j.reviews.size %></li>
+<% if @user %>
+  <h1><%= @user.username %>'s Jobs:</h1>
+<% else %>
+  <h1>All Jobs</h1>
 <% end %>
-</ul>
+
+<% if @jobs.empty? %>
+  <h2>No jobs yet. Create a job <%= link_to "Here", new_job_path %></h2>
+<% else %>
+  <ul>
+    <% @jobs.each do |j| %>
+      <li><%= link_to j.title, job_path(j) %> - <%= j.reviews.size %></li>
+    <% end %>
+  </ul>
+<% end %>
