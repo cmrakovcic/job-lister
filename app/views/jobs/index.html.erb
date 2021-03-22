@@ -1,15 +1,8 @@
-<% if @user %>
-  <h1><%= @user.username %>'s Jobs:</h1>
-<% else %>
-  <h1>All Jobs</h1>
-<% end %>
-
+ <%= index_display_header %>
 <% if @jobs.empty? %>
-  <h2>No jobs yet. Create a job <%= link_to "Here", new_job_path %></h2>
+
+    <h2>No jobs yet. Create a job <%= link_to "here", new_job_path%></h2>
+
 <% else %>
-  <ul>
-    <% @jobs.each do |j| %>
-      <li><%= link_to j.title, job_path(j) %> - <%= j.reviews.size %></li>
-    <% end %>
-  </ul>
+  <%= render partial: "jobs", locals: {posts: @jobs} %>
 <% end %>
