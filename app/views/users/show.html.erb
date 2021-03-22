@@ -8,4 +8,5 @@
         <% @user.jobs.each do |j| %>
             <li><%= link_to j.title, job_path(j) %></li>
     </ul>
+    <% end %>
 <% end %>
