@@ -5,15 +5,18 @@
 <h2>Company: <%= @job.company%> </h2>
 
 <h2>Category: <%= @job.category.try(:name) %></h2>
-
-<h3><%= link_to "Edit Job", edit_job_path(@job) %>
+<% if @job.user == current_user %>
+    <h3><%= link_to "Edit Job", edit_job_path(@job) %>
+<% end %>
 
 <div><%= @job.content%></div>
 
-<p><%= link_to "See all Reviews", job_reviews_path(@job) %></p>
 <p><%= link_to "Add a New Comment", new_job_review_path(@job) %></p>
 
-<h3>Reviews:</h3>
-<% @job.reviews.each do |r| %>
-    <li><strong><%= r.user.username %></strong> says "<%= link_to r.content, job_review_path(@job, r) %>"</li>
+<% if !@job.reviews.empty? %>
+    <p><%= link_to "See all Reviews", job_reviews_path(@job) %></p>
+    <h3>Reviews:</h3>
+    <% @job.reviews.each do |r| %>
+        <li><strong><%= r.user.username %></strong> says "<%= link_to r.content, job_review_path(@job, r) %>"</li>
+    <% end %>
 <% end %>
