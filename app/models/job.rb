@@ -5,6 +5,7 @@ class Job < ApplicationRecord
   has_many :users, through: :reviews
 
   scope :alpha, -> { order(:title) }
+  scope :most_reviews, -> { joins(:reviews).group('jobs.id').order('count(jobs.id) desc') }
 
   def category_attributes=(attr)
     self.category = Category.find_or_create_by(attr) if !attr[:name].blank?

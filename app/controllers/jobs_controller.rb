@@ -15,7 +15,7 @@ class JobsController < ApplicationController
             @jobs = @user.jobs.alpha
         else
             @error = "That user doesn't exist" if params[:user_id]
-            @jobs = Job.alpha
+            @jobs = Job.most_reviews
         end
     end
 

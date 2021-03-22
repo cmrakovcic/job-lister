@@ -2,6 +2,6 @@
 
 <ul>
 <% @jobs.each do |j| %>
-  <li><%= link_to j.title, job_path(j) %></li>
+  <li><%= link_to j.title, job_path(j) %> - <%= j.reviews.size %></li>
 <% end %>
 </ul>
