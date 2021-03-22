@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "/auth/google_oauth2" => 'sessions#google'
 
   resources :jobs do
-     resources :reviews
+    resources :reviews
   end
    resources :reviews
    resources :users do
