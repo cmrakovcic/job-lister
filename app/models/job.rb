@@ -4,6 +4,8 @@ class Job < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
+  validates :content, :title, presence: true
+
   scope :alpha, -> { order(:title) }
   scope :most_reviews, -> { joins(:reviews).group('jobs.id').order('count(jobs.id) desc') }
 

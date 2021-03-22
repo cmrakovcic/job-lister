@@ -4,4 +4,6 @@ class User < ApplicationRecord
     has_many :reviewed_jobs, through: :reviews, source: :job
     has_secure_password
     has_many :categories, through: :jobs
+
+    validates :username, :email, presence: true
 end
