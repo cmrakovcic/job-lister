@@ -12,10 +12,10 @@ class JobsController < ApplicationController
 
     def index
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @jobs = @user.jobs
+            @jobs = @user.jobs.alpha
         else
             @error = "That user doesn't exist" if params[:user_id]
-            @jobs = Job.all
+            @jobs = Job.alpha
         end
     end
 
