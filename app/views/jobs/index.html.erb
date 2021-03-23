@@ -1,8 +1,8 @@
- <%= index_display_header %>
+<%= index_display_header %>
 <% if @jobs.empty? %>
 
     <h2>No jobs yet. Create a job <%= link_to "here", new_job_path%></h2>
 
 <% else %>
-  <%= render partial: "jobs", locals: {posts: @jobs} %>
+  <%= render partial: "jobs", locals: {jobs: @jobs} %>
 <% end %>
