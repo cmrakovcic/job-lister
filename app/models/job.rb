@@ -6,7 +6,7 @@ class Job < ApplicationRecord
   validates :content, :title, presence: true
 
   scope :alpha, -> { order(:title) }
-  scope :most_reviews, -> { left_joins(:reviews).group('jobs.id').order('count(reviews.jobs_id) desc') }
+  scope :most_reviews, -> { left_joins(:reviews).group('jobs.id').order('count(reviews.job_id) desc') }
 
   def category_attributes=(attr)
     self.category = Category.find_or_create_by(attr) if !attr[:name].blank?
