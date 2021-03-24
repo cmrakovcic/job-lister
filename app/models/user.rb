@@ -8,6 +8,6 @@ class User < ApplicationRecord
     validates :username, :email, presence: true
 
     def self.most_active
-        joins(:jobs).group(:user_id).order("count(user_id) desc").limit(3)
+        @top_users = joins(:jobs).group(:user_id).order("count(user_id) desc").limit(3)
     end
 end

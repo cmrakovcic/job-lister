@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
 
     def most_active
-        @users = User.most_active
+        @top_users = User.most_active
     end
 
     private
