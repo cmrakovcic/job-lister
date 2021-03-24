@@ -12,7 +12,7 @@
     <h3><%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"} %></h3>
 <% end %>
 
-<p><%= link_to "Add a New Comment", new_job_review_path(@job) %></p>
+<p><%= link_to "Add a New Review", new_job_review_path(@job) %></p>
 
 <% if !@job.reviews.empty? %>
     <p><%= link_to "See all Reviews", job_reviews_path(@job) %></p>

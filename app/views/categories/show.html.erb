@@ -1,0 +1,7 @@
+<h1><%= @category.name %> - <%= pluralize(@category.jobs.count, "jobs") %></h1>
+
+<ol>
+    <% @category.jobs.each do  |job| %>
+      <li><%= link_to job.title, job_path(job)  %></li>
+    <% end  %>
+</ol>

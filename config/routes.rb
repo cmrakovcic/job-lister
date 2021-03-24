@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root "sessions#home"
+
+  get '/users/most-active' => 'users#most_active'
+
+  get '/categories' => 'categories#index'
  
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
@@ -12,13 +16,13 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   #omniauth callback route
-  get "/auth/google_oauth2" => 'sessions#google'
+  post "/auth/:provider/callback" => 'sessions#google'
 
   resources :jobs do
     resources :reviews
   end
-   resources :reviews
-   resources :users do
-     resources :jobs, shallow: true
+  resources :reviews
+  resources :users do
+    resources :jobs, shallow: true
   end
 end
