@@ -1,6 +1,6 @@
 <h1><%=@job.title%></h1>
 <br>
-<h2>By: <%=@job.user.username%> </h2>
+<h2>By: <%=link_to @job.user.username, user_path(@job.user) %> </h2>
 <br>
 <h2>Company: <%= @job.company%> </h2>
 <br>
