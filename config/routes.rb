@@ -16,13 +16,16 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   #omniauth callback route
-  post "/auth/:provider/callback" => 'sessions#google'
+  get "/auth/:provider/callback" => 'sessions#google'
 
   resources :jobs do
     resources :reviews
   end
+
   resources :reviews
   resources :users do
     resources :jobs, shallow: true
   end
+
+  resources :categories, only: [:index, :show]
 end
