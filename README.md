@@ -1,24 +1,15 @@
-# README
+# JobLister App
+    This Rails Application allows the user to make a secure account through the app, as well as google.  The user can then create, read, update, and delete the jobs and reviews that they post.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Installation
+    Type the following code into your terminal:
+        $ bundle install
+        $ rake db:migrate
+# Usage
+    Type the code below into your terminal, then go to http://localhost:3000/ in your internet browser.
+        $ rails s
+# Contributor's Guide
+    This project was created at https://github.com/cmrakovcic/job-lister.  Pull requests and Bug Reports are supported.  
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# License
+    The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
