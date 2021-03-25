@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <style>
+      * {
+        text-align: center;
+        font-family: Georgia, serif;
+        color: #000000;
+      }
+      nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000000;
+      }
+      dt {
+        float: left;
+      }
+      dt a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 7px 8px;
+        text-decoration: none;
+      }
+      dt a:hover {
+        background-color: #8B0000;
+      }
+      ul {
+	      list-style: none;
+      }
+  </style>
     <title>JobLister</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+  </head>
   <body>
   <br>
     <div>
-      <% if logged_in? %>
-      <%= link_to "Add a Job", new_job_path %> |
-      <%= link_to "All Jobs", jobs_path %> |
-      <%= link_to "My Jobs", user_jobs_path(current_user) %> |
-      <%= link_to "Add a Review", new_review_path %> |
-      <%= link_to "All Categories", categories_path %> |
-      <%= link_to "Home", user_path(current_user) %> |
-      <%= button_to "Logout", logout_path, method:"delete" %>
+    <nav>
+      <ul>
+        <% if logged_in? %>
+        <dt><%= link_to "Add a Job", new_job_path %> | </dt>
+        <dt><%= link_to "All Jobs", jobs_path %> | </dt>
+        <dt><%= link_to "My Jobs", user_jobs_path(current_user) %> | </dt>
+        <dt><%= link_to "Add a Review", new_review_path %> | </dt>
+        <dt><%= link_to "All Categories", categories_path %> | </dt>
+        <dt><%= link_to "Most Active Users", users_most_active_path %></dt>
+        <dt><%= link_to "Home", user_path(current_user) %> | </dt>
+        <dt><%= button_to "Logout", logout_path, method:"delete" %></dt>
 
-      <% else %>
-      <%= link_to "Sign Up", signup_path %> |
-      <%= link_to "Log In", login_path %> |
-      <% end %>
-
+        <% else %>
+        <dt><%= link_to "Sign Up", signup_path %> | </dt>
+        <dt><%= link_to "Log In", login_path %> | </dt>
+        <dt><%= link_to "Log In With Google", '/auth/google_oauth2' %></dt>
+        <% end %>
+      </ul>
+    </nav>
     </div>
 
     <div>
@@ -33,5 +68,10 @@
     </div>
 
     <%= yield %>
+    <div class="wrapper">
+      <footer class="branding">
+        <small>&copy; 2021 <strong>JobLister</strong></small>
+      </footer>
+    </div>
   </body>
 </html>

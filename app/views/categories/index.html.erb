@@ -1,12 +1,12 @@
 <ul>
   <% @categories.each do |category| %>
     <li>
-      <%= category.name %>
-      <ol>
+      <h1><%= category.name %></h1>
+      <ul>
         <% category.jobs.each do  |job| %>
           <li><%= link_to job.title, job_path(job)  %></li>
         <% end  %>
-      </ol>
+      </ul>
     </li>
   <% end %>
 </ul>
