@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :categories, through: :jobs
 
     validates :username, :email, presence: true
+    validates :username, uniqueness: {scope: :username, message: "already exists"}
 
     def self.most_active
         @top_users = joins(:jobs).group(:user_id).order("count(user_id) desc").limit(3)
